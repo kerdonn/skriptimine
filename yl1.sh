@@ -1,1 +1,0 @@
-echo Tere, User !

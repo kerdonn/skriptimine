@@ -1,3 +1,2 @@
 kasutajanimi=$(whoami)
-echo -n "Tere, $kasutajanimi!"
-
+echo "Tere, $kasutajanimi!"
