@@ -5,10 +5,10 @@ echo -n "Sisesta aluskandiku laius cm: "
 read laius
 
 echo -n "Sisesta küpsise pikkus cm: "
-read kupis_pikkus
+read küpsis
 
 echo -n "Sisesta küpsise laius cm: "
-read kupis_laius
+read küpsis_laius
 
 echo -n "Mitu kihti torti soovid: "
 read kihid
@@ -16,15 +16,17 @@ read kihid
 echo -n "Mitu küpsist on ühes pakis: "
 read pakis
 
+küpsised_reas=`expr $pikkus / $küpsis`
+küpsised_kõrvuti=`expr $laius / $küpsis_laius`
+küpsised_kihis=`expr $küpsised_reas \* $küpsised_kõrvuti`
+küpsiseid_kokku=`expr $küpsised_kihis \* $kihid`
+pakke=`expr $küpsiseid_kokku / $pakis`
+jääk=`expr $küpsiseid_kokku % $pakis`
 
-read_kupsised_pikkuses=`expr \( $pikkus + $kupis_pikkus - 1 \) / $kupis_pikkus`
-read_kupsised_laiuses=`expr \( $laius + $kupis_laius - 1 \) / $kupis_laius`
+if [ $jääk -ne 0 ]
+then
+    pakke=`expr $pakke + 1`
+fi
 
-
-kupsised_kihis=`expr $read_kupsised_pikkuses \* $read_kupsised_laiuses`
-kupsised_kokku=`expr $kupsised_kihis \* $kihid`
-
-
-pakid=`expr \( $kupsised_kokku + $pakis - 1 \) / $pakis`
-
-echo "Osta poest $pakid pakki küpsiseid."
+echo "Vajalik küpsiste arv: $küpsiseid_kokku"
+echo "Poest tuleb osta $pakke pakki küpsiseid."
