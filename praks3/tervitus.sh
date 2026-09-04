@@ -1,4 +1,3 @@
-echo -n "Sisesta oma ees- ja perekonnanimi: "
-read nimi
-
-echo "Tere tulemast, $nimi"
+echo -n "Sisesta oma ees- ja perenimi: "
+read eesnimi perenimi
+echo "Tere tulemast, $eesnimi $perenimi"
